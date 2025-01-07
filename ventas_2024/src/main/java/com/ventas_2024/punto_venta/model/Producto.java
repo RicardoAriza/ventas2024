@@ -1,5 +1,6 @@
 package com.ventas_2024.punto_venta.model;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -16,10 +17,11 @@ public class Producto {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idProducto;
-    @ManyToOne
-    @JoinColumn(name = "idEmpresa", nullable = false)
-    private Empresa empresa;
-
+    
+    // Mapeo directo del campo de clave foránea
+    @Column(name = "idEmpresa", nullable = false)
+    private int idEmpresa;
+   
     @ManyToOne
     @JoinColumn(name = "idCategoria", nullable = false)
     private Categoria categoria;
@@ -33,9 +35,9 @@ public class Producto {
     }
 
     // Constructor con parámetros
-    public Producto(Long idProducto, Empresa empresa, Categoria categoria, String nombre, String descripcion, String precio, String stock) {
+    public Producto(Long idProducto, int idEmpresa, Categoria categoria, String nombre, String descripcion, String precio, String stock) {
         this.idProducto = idProducto;
-        this.empresa = empresa;
+        this.idEmpresa = idEmpresa;
         this.categoria = categoria;
         this.nombre = nombre;
         this.descripcion = descripcion;
@@ -46,8 +48,8 @@ public class Producto {
     @Override
     public String toString() {
         return "CEProducto [idProducto=" + idProducto + 
-               ", idEmpresa=" + empresa + 
-               ", idCategoria=" + categoria + 
+               ", idEmpresa=" + idEmpresa + 
+               ", categoria=" + categoria + 
                ", nombre=" + nombre + 
                ", descripcion=" + descripcion + 
                ", precio=" + precio + 

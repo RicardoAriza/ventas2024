@@ -17,7 +17,7 @@ public class EmpresaController {
     public List<Empresa> getEmpresas() {
         return empresaServ.getEmpresas();
     }
-
+    
     @GetMapping("/{id}")
     public Empresa findEmpresa(@PathVariable Long id) {
         return empresaServ.findEmpresa(id);

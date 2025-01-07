@@ -17,12 +17,17 @@ public class ProductoController {
     public List<Producto> getProductos() {
         return productoServ.getProductos();
     }
-
+    
+    @GetMapping("/search/{name}")
+    public List<Producto> searchProductos(@PathVariable String name) {
+        return productoServ.searchProducto(name);  // Pasamos 'name' en lugar de 'producto'
+    }
+    
     @GetMapping("/{id}")
     public Producto findProducto(@PathVariable Long id) {
         return productoServ.findProducto(id);
     }
-
+    
     @PostMapping("/crear")
     public String saveProducto(@RequestBody Producto producto) {
         productoServ.saveProducto(producto);

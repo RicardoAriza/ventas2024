@@ -14,4 +14,7 @@ public interface IProductoService {
     public Producto findProducto(Long id);
 
     public void editProducto(Producto producto);
+    
+    public List<Producto> searchProducto(String name);
+
 }

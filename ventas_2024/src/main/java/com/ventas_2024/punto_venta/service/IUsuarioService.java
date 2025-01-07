@@ -12,6 +12,8 @@ public interface IUsuarioService {
     public void deleteUsuario(Long id);
 
     public Usuario findUsuario(Long id);
+    
+    public Usuario findByUsername(String nombre);
 
     public void editUsuario(Usuario usuario);
     

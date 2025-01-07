@@ -16,7 +16,7 @@ public class ProductoService implements IProductoService {
     public List<Producto> getProductos() {
         return repoProducto.findAll();
     }
-
+    
     @Override
     public void saveProducto(Producto producto) {
         repoProducto.save(producto);
@@ -35,5 +35,10 @@ public class ProductoService implements IProductoService {
     @Override
     public void editProducto(Producto producto) {
         this.saveProducto(producto);
+    }
+    
+    @Override
+    public List<Producto> searchProducto(String nombre) {
+        return repoProducto.findByNombreContainingIgnoreCase(nombre);
     }
 }

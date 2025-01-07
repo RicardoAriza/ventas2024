@@ -31,6 +31,12 @@ public class UsuarioService implements IUsuarioService {
     public Usuario findUsuario(Long id) {
         return repoUsuario.findById(id).orElse(null);
     }
+    
+    @Override
+    public Usuario findByUsername(String username) {
+        Usuario usuario = repoUsuario.findByUsername(username);
+        return usuario; // Retorna null si no encuentra el usuario (puedes lanzar una excepción si lo prefieres)
+    }
 
     @Override
     public void editUsuario(Usuario usuario) {

@@ -4,8 +4,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Column;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -16,10 +15,12 @@ public class Categoria {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idCategoria; // Si prefieres String, lo puedes mantener como String
-    @ManyToOne
-    @JoinColumn(name = "idEmpresa", nullable = false)
-    private Empresa empresa;
+    private Long idCategoria;
+
+    // Reemplaza la relación con Empresa por una simple columna
+    @Column(name = "idEmpresa", nullable = false)
+    private Long idEmpresa;
+
     private String nombre;
 
     // Constructor vacío (requerido por JPA)
@@ -27,16 +28,16 @@ public class Categoria {
     }
 
     // Constructor con parámetros
-    public Categoria(Long idCategoria, Empresa empresa, String nombre) {
+    public Categoria(Long idCategoria, Long idEmpresa, String nombre) {
         this.idCategoria = idCategoria;
-        this.empresa = empresa;
+        this.idEmpresa = idEmpresa;
         this.nombre = nombre;
     }
 
     @Override
     public String toString() {
-        return "CECategoria [idCategoria=" + idCategoria
-                + ", idEmpresa=" + empresa
-                + ", nombre=" + nombre + "]";
+        return "Categoria [idCategoria=" + idCategoria +
+               ", idEmpresa=" + idEmpresa +
+               ", nombre=" + nombre + "]";
     }
 }

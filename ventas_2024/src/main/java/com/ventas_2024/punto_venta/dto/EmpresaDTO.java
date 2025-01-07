@@ -10,4 +10,7 @@ public class EmpresaDTO {
     private String telefono;
     private String direccion;
     private Date fechaRegistro;
+    
+    
+    
 }
